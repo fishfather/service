@@ -4,7 +4,6 @@
 .c9/
 *.launch
 .settings/
-*.sublime-workspace
 .idea/
 *.class
 target/
