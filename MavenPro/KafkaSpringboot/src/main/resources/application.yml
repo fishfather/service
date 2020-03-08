@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: kafka-user
+  kafka:
+    # 指定 kafka 地址，我这里在本地，直接就 localhost, 若外网地址，注意修改【PS: 可以指定多个】
+    bootstrap-servers: 192.168.0.221:9092
+    consumer:
+      # 指定 group_id
+      group-id: group1
+
+#      earliest：当各分区下有已提交的 offset 时，从提交的 offset 开始消费；无提交的 offset时，从头开始消费；
+#      latest：当各分区下有已提交的 offset 时，从提交的 offset 开始消费；无提交的 offset 时，消费新产生的该分区下的数据；
+#      none: topic 各分区都存在已提交的 offset 时，从 offset 后开始消费；只要有一个分区不存在已提交的 offset，则抛出异常;
+
+#      默认建议用 earliest, 设置该参数后 kafka出错后重启，找到未消费的offset可以继续消费。
+#      而 latest 这个设置容易丢失消息，假如 kafka 出现问题，还有数据往topic中写，这个时候重启kafka，这个设置会从最新的offset开始消费, 中间出问题的哪些就不管了。
+#      none 这个设置没有用过，兼容性太差，经常出问题。
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      # 指定消息key和消息体的编解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      # 指定消息key和消息体的编解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      # 在侦听器容器中运行的线程数。
+      concurrency: 3
