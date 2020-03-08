@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/oxm
+       https://www.springframework.org/schema/oxm/spring-oxm.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--    <context:annotation-config/>-->
+    <context:component-scan base-package="com.jw.spring4.demo1.b_scanbean" />
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+    <bean id="mybeanPost" class="com.jw.spring4.demo1.c_beanpost.MyBeanPostProcessor"/>
+
+
+    <bean id="userService" class="com.jw.spring4.demo1.a_simplebean.UserServiceImpl" />
+    <bean id="userService2" class="com.jw.spring4.demo1.a_simplebean.UserService2ImplB" />
+
+
+    <bean id="javaBeanConfig" class="com.jw.spring4.demo1.d_javaconfig.BeanConfiguration" />
+
+<!--    切面-->
+    <bean id="userService6" class="com.jw.spring4.demo1.f_aspectsjaop.UserService6" />
+    <bean id="myAspect" class="com.jw.spring4.demo1.f_aspectsjaop.MyAspect" />
+
+    <bean id="userService7" class="com.jw.spring4.demo1.g_aspectsjaoppointcut.UserService7" />
+    <bean id="myAspectPointCut" class="com.jw.spring4.demo1.g_aspectsjaoppointcut.MyAspectPointCut" />
+    <bean id="myPointCut2" class="com.jw.spring4.demo1.g_aspectsjaoppointcut.MyPointcut" />
+
+</beans>
