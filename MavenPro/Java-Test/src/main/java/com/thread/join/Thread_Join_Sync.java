@@ -19,10 +19,15 @@ class ThreadTest extends Thread {
     }
     @Override
     public void run() {
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         synchronized (thread) {
             System.out.println("getObjectLock");
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

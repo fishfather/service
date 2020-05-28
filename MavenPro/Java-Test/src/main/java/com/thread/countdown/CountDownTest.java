@@ -13,7 +13,7 @@ public class CountDownTest {
                 public void run() {
                     System.out.println(Thread.currentThread().getName() + " 运行");
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } finally {

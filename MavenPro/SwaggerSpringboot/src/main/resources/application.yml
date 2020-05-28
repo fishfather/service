@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /swagger
+
+swagger:
+  enabled: true
+  base-package: com.jw.swagger.controller
+  version: 1.0
+  title: swagger sample
+  contact:
+    name: jiangwei
+    url: http://www.test.com
+    email: jw@test.com
