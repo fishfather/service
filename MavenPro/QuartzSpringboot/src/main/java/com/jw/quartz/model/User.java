@@ -1,4 +1,4 @@
-package com.jw.swagger.model;
+package com.jw.quartz.model;
 
 public class User {
     private Integer age;
