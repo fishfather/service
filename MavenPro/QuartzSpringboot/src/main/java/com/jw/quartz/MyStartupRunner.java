@@ -18,7 +18,5 @@ public class MyStartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println(">>>>>>>>>>>>>>>MyStartupRunner start<<<<<<<<<<<<<");
-//        List<Student> list = service.getList();
-//        list.stream().forEach(System.out::println);
     }
 }
