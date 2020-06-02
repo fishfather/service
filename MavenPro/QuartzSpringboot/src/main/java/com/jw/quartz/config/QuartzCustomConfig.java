@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@Configuration
 public class QuartzCustomConfig implements SchedulerFactoryBeanCustomizer {
 
     @Override
@@ -18,16 +18,16 @@ public class QuartzCustomConfig implements SchedulerFactoryBeanCustomizer {
 
         schedulerFactoryBean.setOverwriteExistingJobs(true);
 
-        JobDetail jobDetail1 = JobBuilder.newJob(QJob.class).withIdentity("testQuartzJob1","group1").storeDurably().build();
-        JobDetail jobDetail2 = JobBuilder.newJob(QJob.class).withIdentity("testQuartzJob2","group1").storeDurably().build();
-        schedulerFactoryBean.setJobDetails(jobDetail1,jobDetail2);
+        JobDetail jobDetail1 = JobBuilder.newJob(QJob.class).withIdentity("testQuartzJob1", "group1").storeDurably().build();
+        JobDetail jobDetail2 = JobBuilder.newJob(QJob.class).withIdentity("testQuartzJob2", "group1").storeDurably().build();
+        schedulerFactoryBean.setJobDetails(jobDetail1, jobDetail2);
 
         SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever().withMisfireHandlingInstructionNextWithRemainingCount();
-        Trigger trigger1  = TriggerBuilder.newTrigger().forJob(jobDetail1).withIdentity("testQuartzTriggerA","group1").withSchedule(scheduleBuilder) .build();
+        Trigger trigger1 = TriggerBuilder.newTrigger().forJob(jobDetail1).withIdentity("testQuartzTriggerA", "group1").withSchedule(scheduleBuilder).build();
 
         SimpleScheduleBuilder scheduleBuilder2 = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever().withMisfireHandlingInstructionNextWithRemainingCount();
-        Trigger trigger2  = TriggerBuilder.newTrigger().forJob(jobDetail2).withIdentity("testQuartzTriggerB","group1").withSchedule(scheduleBuilder2) .build();
+        Trigger trigger2 = TriggerBuilder.newTrigger().forJob(jobDetail2).withIdentity("testQuartzTriggerB", "group1").withSchedule(scheduleBuilder2).build();
 
-        schedulerFactoryBean.setTriggers(trigger1,trigger2);
+        schedulerFactoryBean.setTriggers(trigger1, trigger2);
     }
 }

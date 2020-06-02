@@ -1,6 +1,7 @@
 package com.jw.quartz.controller;
 
 import com.jw.quartz.job.QJob;
+import com.jw.quartz.manager.QuartzManager;
 import com.jw.quartz.model.User;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     Scheduler scheduler;
+
+    @Autowired
+    QuartzManager manager;
+
+    @RequestMapping(value = "updateJobs", method = RequestMethod.GET)
+    public String updateJobs(){
+        System.out.println("Enter user.");
+        manager.updateAllQuartzJobs();
+        return "success";
+    }
 
     @RequestMapping(value = "user", method = RequestMethod.GET)
     public User hello(){

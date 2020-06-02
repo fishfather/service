@@ -26,7 +26,7 @@ spring:
             useProperties: false
           threadPool:
             class: org.quartz.simpl.SimpleThreadPool
-            threadCount: 10
+            threadCount: 5
             threadPriority: 5
             threadsInheritContextClassLoaderOfInitializingThread: true
     #数据库方式

@@ -1,5 +1,6 @@
 package com.jw.quartz.repo;
 
+import com.jw.quartz.model.Job;
 import com.jw.quartz.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,6 +25,22 @@ public class StuService {
                 Student stu = new Student();
                 stu.setId(rs.getInt("ID"));
                 stu.setAge(rs.getInt("AGE"));
+                stu.setName(rs.getString("NAME"));
+                return stu;
+            }
+
+        });
+        return query;
+    }
+
+    public List<Job> getJobs(){
+        String sql = "SELECT NAME, INFO  FROM JOBS WHERE ACTIVE = 'Y'";
+        List<Job> query = (List<Job>) jdbcTemplate.query(sql, new RowMapper<Job>() {
+
+            @Override
+            public Job mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Job stu = new Job();
+                stu.setInfo(rs.getString("INFO"));
                 stu.setName(rs.getString("NAME"));
                 return stu;
             }

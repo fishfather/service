@@ -18,11 +18,13 @@ public class QJob extends QuartzJobBean {
             String triggerName = jobExecutionContext.getTrigger().getKey().getName();
             String jobName = jobExecutionContext.getTrigger().getJobKey().getName();
             String scheduleName = jobExecutionContext.getScheduler().getSchedulerName();
+            String jobData = (String) jobExecutionContext.getJobDetail().getJobDataMap().get("data");
 
             System.out.print("Thread is:"+Thread.currentThread().getId());
             System.out.print(" ScheduleName is:"+scheduleName);
             System.out.print(" Trigger is:"+triggerName);
             System.out.print(" jobName is:"+jobName);
+            System.out.print(" jobData is:"+jobData);
             System.out.println(" execute quartz task at:"+new Date());
         } catch (SchedulerException e) {
             e.printStackTrace();
