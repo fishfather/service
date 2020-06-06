@@ -10,6 +10,9 @@ public class QuartzCustomConfig implements SchedulerFactoryBeanCustomizer {
     @Override
     public void customize(SchedulerFactoryBean schedulerFactoryBean) {
         System.out.println("------------------------- **************** start");
+
+        schedulerFactoryBean.setApplicationContextSchedulerContextKey("appContext");
+
         schedulerFactoryBean.setAutoStartup(false);
     }
 }
