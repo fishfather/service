@@ -1,11 +1,13 @@
 server:
   port: 8081
-  servlet:
-    context-path: /test
+#  servlet:
+#    context-path: /test
 
 #debug: true
 
 spring:
+  profiles:
+    active: dev
   application:
     name: Test
   datasource:
@@ -18,23 +20,26 @@ spring:
     username: root
     password: '000123'
     driver-class-name: com.mysql.cj.jdbc.Driver
-  quartz:
-    properties:
-      org:
-        quartz:
-          scheduler:
-            instanceName: TEST_SCHEDULE
-            instanceId: AUTO
-          jobStore:
-            class: org.quartz.impl.jdbcjobstore.JobStoreTX
-            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-            tablePrefix: QRTZ_
-            isClustered: true
-            clusterCheckinInterval: 10000
-            useProperties: false
-          threadPool:
-            class: org.quartz.simpl.SimpleThreadPool
-            threadCount: 5
-            threadPriority: 5
-            threadsInheritContextClassLoaderOfInitializingThread: true
-    job-store-type: jdbc
+#  quartz:
+#    properties:
+#      org:
+#        quartz:
+#          scheduler:
+#            instanceName: TEST_SCHEDULE
+#            instanceId: AUTO
+#          jobStore:
+#            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#            tablePrefix: QRTZ_
+#            isClustered: true
+#            clusterCheckinInterval: 10000
+#            useProperties: false
+#          threadPool:
+#            class: org.quartz.simpl.SimpleThreadPool
+#            threadCount: 5
+#            threadPriority: 5
+#            threadsInheritContextClassLoaderOfInitializingThread: true
+#    job-store-type: jdbc
+
+app:
+  test: DEFAULT
