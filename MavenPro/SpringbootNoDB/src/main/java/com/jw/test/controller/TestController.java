@@ -1,6 +1,8 @@
 package com.jw.test.controller;
 
 import com.jw.test.cache.UserCache;
+import com.jw.test.user.UserEntitlement;
+import com.jw.test.user.UserFactory;
 import com.jw.test.vo.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
@@ -21,6 +23,9 @@ public class TestController {
 
     @Autowired
     private CacheManager cacheManager;
+
+    @Autowired
+    UserFactory userFactory;
 
     @GetMapping("getuser")
     public String test1(int uid){
@@ -47,5 +52,14 @@ public class TestController {
         ConcurrentMapCache cCache = (ConcurrentMapCache) userdetails;
         System.out.println("cache detail:"+cCache);
         return "null";
+    }
+
+    @GetMapping("test")
+    public String test4(String type){
+        UserEntitlement userEntitlement = userFactory.get(type);
+        userEntitlement.getUser();
+        userEntitlement.getClient();
+
+        return "success";
     }
 }
